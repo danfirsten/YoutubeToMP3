@@ -52,12 +52,12 @@ It is your responsibility to ensure that your use of this tool complies with all
 
 ## Usage
 
-1. Save the script to a file, e.g., `download_audio.py`.
+1. Save the script to a file, e.g., `youtubeToMP3.py`.
 
 2. Run the script with the YouTube URL as an argument:
 
    ```bash
-   python download_audio.py "https://www.youtube.com/watch?v=example"
+   python youtubeToMP3.py "https://www.youtube.com/watch?v=example"
    ```
 
 3. The audio will be downloaded and saved as an MP3 file in the `audios/` directory. The filename will match the video title.
@@ -67,7 +67,7 @@ It is your responsibility to ensure that your use of this tool complies with all
 ## Example
 
 ```bash
-python download_audio.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+python youtubeToMP3.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
 
 Output:
