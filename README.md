@@ -28,18 +28,26 @@ It is your responsibility to ensure that your use of this tool complies with all
 
 ## Requirements
 
-- Python 3.6 or later
-- **yt-dlp** library
+- Python 3.10 or later
+- **yt-dlp** 2026.8.19 or later (see `requirements.txt`)
 - FFmpeg (installed and accessible via your system's PATH)
+
+FFmpeg is not optional. yt-dlp downloads the raw audio stream on its own, but
+converting that stream to MP3 is done by FFmpeg — without it the download
+succeeds and then fails at the final conversion step.
+
+Python 3.10 is a hard floor because yt-dlp dropped 3.9 in release 2025.10.22.
+On Python 3.9 `pip install yt-dlp` still succeeds, but silently installs the
+last 3.9-compatible build instead of reporting an error.
 
 ---
 
 ## Installation
 
-1. Install **yt-dlp**:
+1. Install the Python dependencies:
 
    ```bash
-   pip install yt-dlp
+   pip install -r requirements.txt
    ```
 
 2. Install FFmpeg:
@@ -89,6 +97,8 @@ Finished downloading
 
 - **Timeout Errors**: If downloads take too long, ensure the `socket_timeout` value is appropriate or check your internet connection.
 - **Missing FFmpeg**: If conversion to MP3 fails, confirm that FFmpeg is installed and in your PATH.
+- **Extraction Errors** (e.g. `The page needs to be reloaded.`, or warnings about skipped formats): almost always a stale yt-dlp. Run `pip install -U -r requirements.txt`. If the current release still fails, the nightly often carries extractor fixes ahead of it: `pip install -U --pre "yt-dlp[default]"`.
+- **`No supported JavaScript runtime could be found`**: a warning, not an error, and safe to ignore while downloads succeed. If a video later fails with no formats found, installing a JS runtime (e.g. `brew install deno`) resolves it.
 
 ---
 

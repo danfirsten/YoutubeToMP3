@@ -1,0 +1,6 @@
+# YouTube changes its player API often, and extraction fails against a stale
+# yt-dlp. Keep this current: pip install -U -r requirements.txt
+#
+# yt-dlp dropped Python 3.9 in release 2025.10.22, so this pin also requires
+# Python 3.10 or later. On 3.9, pip silently resolves to a much older build.
+yt-dlp>=2026.8.19
