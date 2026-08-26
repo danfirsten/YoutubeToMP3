@@ -11,13 +11,15 @@ print(args)
 # Options for extracting audio
 options = {
     'format': 'bestaudio/best',  # Select the best available audio format
-    'socket_timeout': 10,       # Set timeout to 10 seconds
+    'socket_timeout': 30,       # Set timeout to 30 seconds
+    'retries': 5,               # Retry a failed download instead of giving up
     'postprocessors': [{        # Add post-processing for audio conversion
         'key': 'FFmpegExtractAudio',  # Use FFmpeg to extract audio
         'preferredcodec': 'mp3',      # Convert to MP3 format (change to 'm4a' or 'wav' if desired)
         'preferredquality': '192',    # Audio quality (bitrate in kbps)
     }],
     'outtmpl': 'audios/%(title)s.%(ext)s',   # Save file as "<title>.mp3"
+    'restrictfilenames': True,  # Strip characters that break filenames on Windows/macOS
 }
 
 # Use the URL provided as a command-line argument
